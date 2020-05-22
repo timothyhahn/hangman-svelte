@@ -29,14 +29,14 @@ describe('guessLetter/getState', () => {
 
   test('decrements life for wrong letters', () => {
     game.guessLetter('j');
-    expect(game.lives).toBe(6);
+    expect(game.lives).toBe(8);
     game.guessLetter('f');
 
-    expect(game.lives).toBe(5);
+    expect(game.lives).toBe(7);
 
     game.guessLetter('a');
 
-    expect(game.lives).toBe(5);
+    expect(game.lives).toBe(7);
     expect(game.getState()).toStrictEqual(['j', 'a', '_', '_']);
     expect(game.guessedLetters.has('f')).toBeTruthy();
     expect(game.guessedLetters.has('j')).toBeTruthy();
@@ -126,6 +126,16 @@ describe('gameOver/hasLost/hasWon', () => {
     expect(game.gameOver()).toBeFalsy();
 
     game.guessLetter('g');
+    expect(game.hasWon()).toBeFalsy();
+    expect(game.hasLost()).toBeFalsy();
+    expect(game.gameOver()).toBeFalsy();
+
+    game.guessLetter('h');
+    expect(game.hasWon()).toBeFalsy();
+    expect(game.hasLost()).toBeFalsy();
+    expect(game.gameOver()).toBeFalsy();
+
+    game.guessLetter('i');
     expect(game.hasWon()).toBeFalsy();
     expect(game.hasLost()).toBeTruthy();
     expect(game.gameOver()).toBeTruthy();

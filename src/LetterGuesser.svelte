@@ -3,7 +3,7 @@
     const dispatch = createEventDispatcher();
     let letter;
 
-    function guessLetter() {
+    function handleInput(event) {
         dispatch('guessLetter', {
             letter,
         });
@@ -12,6 +12,5 @@
 </script>
 
 <main>
-    <input bind:value={letter}>
-    <button on:click={guessLetter}>Guess Letter</button>
+    <input bind:value={letter} on:keyup={handleInput} placeholder="Guess a Letter">
 </main>

@@ -21,7 +21,7 @@ export default class Game {
     // set of guessed letters
     this.guessedLetters = new Set();
 
-    this.lives = 6;
+    this.lives = 8;
   }
 
   static placeholderChar() {
@@ -41,10 +41,12 @@ export default class Game {
   }
 
   guessLetter(letter) {
+    letter = letter.toLowerCase();
+
     if (this.gameOver()) {
       throw new GameOverError('Game is already over');
     }
-    letter = letter.toLowerCase();
+
     if (!this.alphabet.has(letter)) {
       throw new NotALetterError('Not a letter');
     }
